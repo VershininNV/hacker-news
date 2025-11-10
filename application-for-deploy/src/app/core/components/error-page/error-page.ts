@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, isDevMode } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppRoutes } from '@core/constants/enums';
 import { TuiButton } from '@taiga-ui/core';
@@ -12,8 +12,9 @@ import { TuiButton } from '@taiga-ui/core';
 })
 export class ErrorPage {
  protected readonly router = inject(Router)
+ protected readonly path = isDevMode() ? '/assets/gif/error.gif' : '/hacker-news/assets/gif/error.gif'
 
  public redirectToHome(): void {
-  this.router.navigateByUrl(AppRoutes.HOME)
+  this.router.navigateByUrl(AppRoutes.Home)
  }
 }

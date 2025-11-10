@@ -25,19 +25,23 @@ export class Dashboard implements OnInit{
     this.news.news$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((res) => this.news$.next(res))
     this.news.isLoading$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((res) => this.isLoading$.next(res))
 
-    this.news.getNews()
+    this.news.getDataFromApi({url: this.news.defualtRoute, type: 'news'})
   }
 
   protected onSearching(searchValue: string | null): void {
-    this.news.getNewsByTitle(searchValue)
+    this.news.getDataFromApi(!!searchValue ?  
+      {url: `https://hn.algolia.com/api/v1/search?query=${searchValue}&tags=front_page`, type: 'news'} : 
+      {url: this.news.defualtRoute, type: 'news'})
     
   }
 
   protected onSorting(option: {signType: string, ratingValue: number} | null): void {
-    this.news.getNewsByRating(option)
+    this.news.getDataFromApi(!!option ?  
+      {url: `https://hn.algolia.com/api/v1/search?tags=front_page&numericFilters=points${option.signType}${option.ratingValue}`, type: 'news'} :
+      {url: this.news.defualtRoute, type: 'news'})
   }
 
   protected onPageChanging(pageNumber: number): void {
-    this.news.getNewsByPage(pageNumber)
+    this.news.getDataFromApi({url: `https://hn.algolia.com/api/v1/search?tags=front_page&page=${pageNumber}`, type: 'news'})
   }
 }

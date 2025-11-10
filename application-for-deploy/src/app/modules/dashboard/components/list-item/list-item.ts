@@ -17,6 +17,6 @@ export class ListItem {
   private router = inject(Router)
 
   protected redirectToItemPage(): void {
-    this.router.navigateByUrl(AppRoutes.NEWS_ITEM_REDICRECT + this.item()?.story_id)
+    this.router.navigateByUrl('item/' + this.item()?.story_id)
   }
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, isDevMode } from '@angular/core';
 import { ThemeSwitcher } from '@shared';
 import { TUI_DARK_MODE } from '@taiga-ui/core';
 
@@ -11,5 +11,6 @@ import { TUI_DARK_MODE } from '@taiga-ui/core';
 })
 export class Header {
   protected readonly darkMode = inject(TUI_DARK_MODE);
-  protected readonly path = this.darkMode() ? '/assets/images/logotype/logo_accent.png' : '/assets/images/logotype/logo.png';
+  protected readonly href = isDevMode() ? '/' : '/hacker-news/'
+  protected readonly path = (isDevMode() ? '/assets/' : '/hacker-news/') + 'images/logotype/' + (this.darkMode() ? 'logo_accent.png' : 'logo.png')
 }

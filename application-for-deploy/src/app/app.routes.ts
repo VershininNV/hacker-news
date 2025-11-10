@@ -4,20 +4,20 @@ import { AppRoutes } from '@core/constants/enums'
 
 export const APP_ROUTES: Routes = [
     {
-        path: AppRoutes.HOME,
+        path: AppRoutes.Home,
         loadComponent: () =>
           import('./modules/dashboard').then(
             m => m.Dashboard
           ),
     },
     {
-    path: AppRoutes.NEWS_ITEM,
+    path: AppRoutes.NewsItem,
         loadComponent: () =>
           import('./modules/news-item').then(
             m => m.NewsItem
           ),
     },
-    { path: AppRoutes.NOT_FOUND, pathMatch: 'full', component: ErrorPage },
-    { path: '**', pathMatch: 'full', redirectTo: AppRoutes.NOT_FOUND},
+    { path: AppRoutes.NotFound, pathMatch: 'full', component: ErrorPage },
+    { path: '**', pathMatch: 'full', redirectTo: AppRoutes.NotFound},
     
 ];

@@ -34,6 +34,6 @@ export class NewsItem implements OnInit{
     this.news.item$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((res) => this.item$.next(res))
     this.news.isLoading$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((res) => this.isLoading$.next(res))
 
-    this.news.getItem(this.id())
+    this.news.getDataFromApi({url: `https://hn.algolia.com/api/v1/items/${this.id()}`, type: 'item'})
   }
 }

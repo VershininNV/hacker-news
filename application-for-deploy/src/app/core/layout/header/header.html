@@ -1,12 +1,8 @@
 <nav class="navbar">
   <div class="navbar__logo">
-    <a href="/hacker-news/">
+    <a [href]="href">
       <img
-        [src]="
-          darkMode()
-            ? '/hacker-news/assets/images/logotype/logo_accent.png'
-            : '/hacker-news/assets/images/logotype/logo.png'
-        "
+        [src]="path"
       />
       <span>Hacker News</span>
     </a>
