@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "sevtech-test": {
+    "hacker-news": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -78,10 +78,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "sevtech-test:build:production"
+              "buildTarget": "hacker-news:build:production"
             },
             "development": {
-              "buildTarget": "sevtech-test:build:development"
+              "buildTarget": "hacker-news:build:development"
             }
           },
           "defaultConfiguration": "development"
