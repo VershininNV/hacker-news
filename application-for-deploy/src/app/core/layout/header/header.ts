@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, isDevMode } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, isDevMode, linkedSignal } from '@angular/core';
 import { ThemeSwitcher } from '@shared';
 import { TUI_DARK_MODE } from '@taiga-ui/core';
 
@@ -12,5 +12,10 @@ import { TUI_DARK_MODE } from '@taiga-ui/core';
 export class Header {
   protected readonly darkMode = inject(TUI_DARK_MODE);
   protected readonly href = isDevMode() ? '/' : '/hacker-news/'
-  protected readonly path = (isDevMode() ? '/assets/' : '/hacker-news/assets/') + 'images/logotype/' + (this.darkMode() ? 'logo_accent.png' : 'logo.png')
+  protected readonly path = linkedSignal({
+    source: () => (this.darkMode()),
+    computation: (source) => {
+      return (isDevMode() ? '/assets/' : '/hacker-news/assets/') + 'images/logotype/' + (source ? 'logo_accent.png' : 'logo.png')
+    }
+  });
 }
