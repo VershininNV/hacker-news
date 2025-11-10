@@ -1,11 +1,11 @@
 {
-  "name": "sevtech-test",
+  "name": "hacker-news",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:prod": "ng build --base-href=/sevtech-test/"
+    "build:prod": "ng build --base-href=/hacker-news/"
   },
   "prettier": {
     "printWidth": 100,
