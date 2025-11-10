@@ -12,5 +12,5 @@ import { TUI_DARK_MODE } from '@taiga-ui/core';
 export class Header {
   protected readonly darkMode = inject(TUI_DARK_MODE);
   protected readonly href = isDevMode() ? '/' : '/hacker-news/'
-  protected readonly path = (isDevMode() ? '/assets/' : '/hacker-news/') + 'images/logotype/' + (this.darkMode() ? 'logo_accent.png' : 'logo.png')
+  protected readonly path = (isDevMode() ? '/assets/' : '/hacker-news/assets/') + 'images/logotype/' + (this.darkMode() ? 'logo_accent.png' : 'logo.png')
 }
