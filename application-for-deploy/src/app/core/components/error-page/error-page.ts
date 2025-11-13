@@ -21,6 +21,5 @@ export class ErrorPage {
     this.activatedRoute.params.subscribe((params) => {
       this.code.set(params['code']);
     })
-    console.log(this.code())
   }
 }

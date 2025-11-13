@@ -19,6 +19,10 @@ export class ErrorInterceptor implements HttpInterceptor {
                         this.router.navigateByUrl(AppRoutes.NotAuthorized)
                         break
                       }
+                      case '404': {
+                        this.router.navigateByUrl(AppRoutes.NotFound)
+                        break
+                      }
                       default: {
                         this.router.navigateByUrl(AppRoutes.ServerError)
                         break
