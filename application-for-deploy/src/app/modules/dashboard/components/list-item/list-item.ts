@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppRoutes, ItemData } from '@core';
+import { ItemData } from '@core';
 import { TuiButton, TuiLink } from '@taiga-ui/core';
 import { TuiBadge, TuiFade } from '@taiga-ui/kit';
 

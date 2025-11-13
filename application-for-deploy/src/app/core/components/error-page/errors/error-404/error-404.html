@@ -1,0 +1,18 @@
+<div class="error-page__container h-100">
+  <div class="error-page__image-container">
+    <div class="error-page__tooltip-container">
+      <div class="error-page__tooltip">Упс! Что-то пошло не так, этой страницы не существует</div>
+      <button
+        appearance="secondary"
+        iconStart="@tui.house"
+        tuiButton
+        type="button"
+        (click)="redirectToHome()"
+      >
+        На Главную
+      </button>
+    </div>
+
+    <img class="error-page__image" [src]="path" alt="error" />
+  </div>
+</div>

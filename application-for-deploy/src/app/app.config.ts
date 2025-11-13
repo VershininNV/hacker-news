@@ -3,15 +3,17 @@ import { provideAnimations } from "@angular/platform-browser/animations";
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection, isDevMode } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { APP_ROUTES } from "./app.routes";
-import { provideHttpClient } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { provideServiceWorker } from '@angular/service-worker';
+import { ErrorInterceptor } from "@core/interceptors";
 
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimations(),
     provideEventPlugins(),
-    provideHttpClient(),
+    provideHttpClient(withInterceptorsFromDi()),
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     provideRouter(APP_ROUTES, withComponentInputBinding()),
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -19,5 +21,6 @@ export const appConfig: ApplicationConfig = {
             enabled: !isDevMode(),
             registrationStrategy: 'registerWhenStable:30000'
           })
-    ]
-};
+    ],
+    
+}

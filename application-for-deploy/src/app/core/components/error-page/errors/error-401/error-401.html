@@ -1,0 +1,18 @@
+<div class="error-page__container h-100">
+  <div class="error-page__image-container">
+    <div class="error-page__tooltip-container">
+      <div class="error-page__tooltip">Вы не авторизованы.</div>
+      <button
+        appearance="secondary"
+        iconStart="@tui.house"
+        tuiButton
+        type="button"
+        (click)="authorize()"
+      >
+        Авторизоваться
+      </button>
+    </div>
+
+    <img class="error-page__image" [src]="path" alt="error" />
+  </div>
+</div>

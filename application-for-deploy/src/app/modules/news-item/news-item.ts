@@ -20,8 +20,8 @@ export class NewsItem implements OnInit{
   protected item$ = new BehaviorSubject<ItemData | null>(null)
   protected isLoading$ = new BehaviorSubject<boolean>(false)
 
-  private activatedRoute = inject(ActivatedRoute);
-  private destroyRef = inject(DestroyRef);
+  private activatedRoute = inject(ActivatedRoute)
+  private destroyRef = inject(DestroyRef)
   private news = inject(NewsService)
 
   constructor() {

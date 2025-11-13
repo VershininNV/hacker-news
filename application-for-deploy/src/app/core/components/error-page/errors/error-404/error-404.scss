@@ -1,0 +1,52 @@
+.error-page {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: center;
+        
+    }
+
+    &__image {
+        height: 65vh;
+        aspect-ratio: 1.05/1;
+    }
+    
+    &__image-container {
+        display: flex;
+        position: relative;
+        height: fit-content;
+        width: fit-content;
+    }
+
+    &__tooltip-container {
+        position: absolute;
+        left: -2rem;
+        top: -4rem;
+        
+    }
+
+    &__tooltip {
+        font: var(--tui-font-heading-5);
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .error-page__image {
+        width: 90vw;
+        height: auto;
+    }
+
+    .error-page__image-container {
+        flex-direction: column;
+        row-gap: 1rem;
+        align-items: center;
+    }
+
+    .error-page__tooltip-container {
+        position: relative;
+        left: unset;
+        top: unset;
+    }
+}

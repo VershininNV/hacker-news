@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
-import { ErrorPage } from '@core/components';
-import { AppRoutes } from '@core/constants/enums'
+import { AppRoutes } from '@core/constants/routes';
 
 export const APP_ROUTES: Routes = [
     {
@@ -17,7 +16,14 @@ export const APP_ROUTES: Routes = [
             m => m.NewsItem
           ),
     },
-    { path: AppRoutes.NotFound, pathMatch: 'full', component: ErrorPage },
+    {
+    path: AppRoutes.Error,
+        loadComponent: () =>
+          import('./core/components/error-page/error-page').then(
+            m => m.ErrorPage
+          ),
+    },
+    /* { path: AppRoutes.NotFound, pathMatch: 'full', component: NotFoundPage }, */
     { path: '**', pathMatch: 'full', redirectTo: AppRoutes.NotFound},
     
 ];

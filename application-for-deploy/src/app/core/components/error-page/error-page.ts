@@ -1,20 +1,26 @@
-import { ChangeDetectionStrategy, Component, inject, isDevMode } from '@angular/core';
-import { Router } from '@angular/router';
-import { AppRoutes } from '@core/constants/enums';
-import { TuiButton } from '@taiga-ui/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Error401, Error404, Error500 } from './errors';
 
 @Component({
   selector: 'app-error-page',
-  imports: [TuiButton],
+  imports: [Error404, Error500, Error401],
   templateUrl: './error-page.html',
   styleUrl: './error-page.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ErrorPage {
- protected readonly router = inject(Router)
- protected readonly path = isDevMode() ? '/assets/gif/error.gif' : '/hacker-news/assets/gif/error.gif'
+  protected code = signal('')
+  protected error404 = '404'
+  protected error401 = '401'
+  protected error500 = '500'
 
- public redirectToHome(): void {
-  this.router.navigateByUrl(AppRoutes.Home)
- }
+  private activatedRoute = inject(ActivatedRoute)
+
+  constructor() {
+    this.activatedRoute.params.subscribe((params) => {
+      this.code.set(params['code']);
+    })
+    console.log(this.code())
+  }
 }

@@ -1,18 +1,11 @@
-<div class="error-page__container h-100">
-  <div class="error-page__image-container">
-    <div class="error-page__tooltip-container">
-      <div class="error-page__tooltip">Где новости?</div>
-      <button
-        appearance="secondary"
-        iconStart="@tui.house"
-        tuiButton
-        type="button"
-        (click)="redirectToHome()"
-      >
-        На Главную
-      </button>
-    </div>
-
-    <img class="error-page__image" [src]="path" alt="error" />
-  </div>
-</div>
+@switch (code()) {
+  @case (error404) {
+    <app-error-404></app-error-404>
+  }
+  @case (error500) {
+    <app-error-500></app-error-500>
+  }
+  @case (error401) {
+    <app-error-401></app-error-401>
+  }
+}
